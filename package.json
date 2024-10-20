@@ -1,0 +1,21 @@
+{
+  "name": "grsync",
+  "version": "1.0.0",
+  "description": "A commandline client for syncing photos from a Ricoh GR IIIx camera to a local device.",
+  "author": "Jeffery Bennett <me@meandmybadself.com>",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p tmp && mkdir -p dist && cp $(command -v node) ./tmp/grsync && node --experimental-sea-config sea-config.json && codesign --remove-signature tmp/grsync && npx postject tmp/grsync NODE_SEA_BLOB tmp/grsync.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 && codesign --sign - tmp/grsync && mv tmp/grsync ./dist/ && rm -rf tmp"
+  },
+  "keywords": [
+    "ricoh",
+    "griii",
+    "griiix"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "progress": "^2.0.3",
+    "readline": "^1.3.0"
+  }
+}
